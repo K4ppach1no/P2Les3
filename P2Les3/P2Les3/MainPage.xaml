@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="P2Les3.MainPage">
+    <TabbedPage.Children>
+        <ContentPage Title="Heroes">
+            
+            <StackLayout>
+                
+                <StackLayout>
+                    <Frame BackgroundColor="#CE8ED5" Padding="10" CornerRadius="0">
+                        <Label Text="Heroes" HorizontalTextAlignment="Center" 
+                           TextColor="White" FontSize="36"/>
+                    </Frame>
+                </StackLayout>
+                
+                <StackLayout>
+                    <Entry x:Name="heroName" Placeholder="Naam"></Entry>
+
+                    <Label Text="Archnemesis"></Label>
+                    <Picker x:Name="pickArchnemesis" 
+                            Title="Pick an Archnemesis" 
+                            TitleColor="Red" 
+                            ItemsSource="{Binding villainCollection}" 
+                            ItemDisplayBinding="{Binding Name}">
+                    </Picker>
+
+                    <Label Text="Sidekick"></Label>
+                    <Picker x:Name="pickSidekick"
+                            Title="Pick a sidekick"
+                            TitleColor="Red"
+                            ItemsSource="{Binding minionCollection}"
+                            ItemDisplayBinding="{Binding Name}">                      
+                    </Picker>
+
+                    <Button Text="Toevoegen" Clicked="AddHeroClicked"></Button>
+                    
+                </StackLayout>
+                
+                <ListView x:Name="ListViewHeros" ItemSelected="HeroSelected" ItemsSource="{Binding heroCollection}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+            
+        </ContentPage>
+        
+        <ContentPage Title="Villains">
+            
+            <StackLayout>
+                
+                <StackLayout>                    
+                    <Frame BackgroundColor="#E128F5" Padding="10" CornerRadius="0">                        
+                        <Label Text="Villains" HorizontalTextAlignment="Center" 
+                           TextColor="White" FontSize="36"/>                        
+                    </Frame>                    
+                </StackLayout>
+                
+                <StackLayout>                    
+                    <Label Text="Naam"></Label>
+                    <Entry x:Name="villainNaam"></Entry>
+                    
+                    <Label Text="Minion"></Label>
+                    <Picker x:Name="pickMinion"
+                            Title="Pick a minion"
+                            TitleColor="Red"
+                            ItemsSource="{Binding minionCollection}"
+                            ItemDisplayBinding="{Binding Name}">                        
+                    </Picker>
+                    
+                    <Button Text="Toevoegen" Clicked="AddVillainClicked"></Button>                   
+                </StackLayout>
+                
+                <ListView x:Name="ListViewVillains"
+                  ItemSelected="VillainSelected" 
+                  ItemsSource="{Binding villainCollection}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Minions">
+            
+            <StackLayout>
+                
+                <Frame BackgroundColor="#E4E693" Padding="10" CornerRadius="0">
+                    <Label Text="Minions" HorizontalTextAlignment="Center" 
+                           TextColor="White" FontSize="36"/>
+                </Frame>
+                
+                <StackLayout>
+                <Label Text="Minion" FontAttributes="Bold" FontSize="Large"></Label>
+                <Label Text="Naam"></Label>
+                <Entry x:Name="minionName"></Entry>
+                <Button Text="Toevoegen" Clicked="AddMinionClicked"></Button>
+                </StackLayout>
+                
+                <ListView x:Name="ListViewMinions" ItemSelected="MinionSelected" ItemsSource="{Binding minionCollection}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+            
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage> 
